@@ -76,15 +76,10 @@ defmodule Polly.VoteManager do
   """
   @impl true
   def handle_call({:add_vote, username, poll_id, option_id}, _from, state) do
-    {:reply, :ok,
-     Map.put_new(state, poll_id, %Vote{
-       poll_id: poll_id,
-       option_id: option_id,
-       username: username
-     })}
+    # TODO: implement this function
   end
 
   defp via(username) do
-    {:via, Registry, {@registry, username}}
+    # TODO: implement this function
   end
 end

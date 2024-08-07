@@ -12,14 +12,7 @@ defmodule Polly.VoteSupervisor do
   @registry_name Polly.VoteRegistry
 
   def start_link(_) do
-    DynamicSupervisor.start_link(
-      __MODULE__,
-      [
-        strategy: :one_for_one,
-        max_restarts: 10
-      ],
-      name: __MODULE__
-    )
+    # TODO: implement this function
   end
 
   @doc """
@@ -29,20 +22,7 @@ defmodule Polly.VoteSupervisor do
   """
   @spec start_child(binary()) :: DynamicSupervisor.on_start_child()
   def start_child(username) do
-    case get_pid(username) do
-      nil ->
-        child = {Polly.VoteManager, username: username}
-
-        Logger.info("#{__MODULE__} - Starting VoteManager for Username: #{username}")
-
-        DynamicSupervisor.start_child(
-          {:via, PartitionSupervisor, {Polly.DynamicSupervisors, self()}},
-          child
-        )
-
-      _pid ->
-        :ignore
-    end
+    # TODO: implement this function
   end
 
   @impl true
@@ -52,12 +32,6 @@ defmodule Polly.VoteSupervisor do
 
   @spec get_pid(String.t()) :: pid() | nil
   defp get_pid(username) do
-    case Registry.lookup(@registry_name, username) do
-      [{pid, nil}] ->
-        pid
-
-      [] ->
-        nil
-    end
+    # TODO: implement this function
   end
 end
