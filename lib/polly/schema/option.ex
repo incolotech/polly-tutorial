@@ -16,14 +16,11 @@ defmodule Polly.Schema.Option do
   end
 
   def changeset(%Option{} = option, attrs \\ %{}) do
-    option
-    |> cast(attrs, [:text, :votes])
-    |> validate_required([:text])
-    |> put_id()
+    # TODO: implement this function
   end
 
   defp put_id(%Ecto.Changeset{valid?: true} = changeset) do
-    put_change(changeset, :id, UUID.uuid4(:hex))
+    # TODO: implement this function
   end
 
   defp put_id(%Ecto.Changeset{valid?: false} = changeset) do

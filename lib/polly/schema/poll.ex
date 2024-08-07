@@ -21,16 +21,11 @@ defmodule Polly.Schema.Poll do
   end
 
   def changeset(%Poll{} = poll, attrs \\ %{}) do
-    poll
-    |> cast(attrs, [:title, :total_votes, :creator_username, :description])
-    |> validate_required([:title])
-    |> cast_embed(:options)
-    |> put_created_at()
-    |> put_id()
+    # TODO: implement this function
   end
 
   defp put_id(%Ecto.Changeset{valid?: true} = changeset) do
-    put_change(changeset, :id, UUID.uuid4(:hex))
+    # TODO: implement this function
   end
 
   defp put_id(%Ecto.Changeset{valid?: false} = changeset) do
@@ -38,7 +33,7 @@ defmodule Polly.Schema.Poll do
   end
 
   defp put_created_at(%Ecto.Changeset{valid?: true} = changeset) do
-    put_change(changeset, :created_at, NaiveDateTime.utc_now())
+    # TODO: implement this function
   end
 
   defp put_created_at(%Ecto.Changeset{valid?: false} = changeset) do

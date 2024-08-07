@@ -71,31 +71,7 @@ defmodule PollyWeb.PollLive.Show do
 
   @impl true
   def handle_event("save", params, socket) do
-    cond do
-      # only allow for voting when the user is signed in and hasn't already voted
-      not is_nil(socket.assigns.current_user) and not socket.assigns.already_voted ->
-        :ok = increment_vote(socket, params)
-
-        # we broadcast an event for vote
-        PollyWeb.Endpoint.broadcast(@polls_topic, @poll_vote_event, params)
-
-        {:noreply,
-         socket
-         |> put_flash(:info, "Thank you for the vote")
-         |> assign(:already_voted, true)
-         |> assign(:selected_option_id, params["option"])}
-
-      is_nil(socket.assigns.current_user) ->
-        {:noreply,
-         socket
-         |> put_flash(:error, "You need to sign in to vote")
-         |> redirect(to: ~p"/username/log_in")}
-
-      socket.assigns.already_voted ->
-        {:noreply,
-         socket
-         |> put_flash(:error, "You have already voted")}
-    end
+    # TODO: implement this function
   end
 
   @impl true

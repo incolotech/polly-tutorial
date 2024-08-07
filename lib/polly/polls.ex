@@ -20,14 +20,11 @@ defmodule Polly.Polls do
 
   @spec create_poll(map()) :: {:ok, Poll.t()} | {:error, Ecto.Changeset.t()}
   def create_poll(params) do
-    Poll.changeset(%Poll{}, params)
-    |> Ecto.Changeset.apply_action(:update)
-    |> do_create_poll()
+    # TODO: implement this function
   end
 
   defp do_create_poll({:ok, %Poll{} = poll}) do
-    :ok = Polly.PollsManager.add_poll(poll)
-    {:ok, poll}
+    # TODO: implement this function
   end
 
   defp do_create_poll({:error, changeset}) do
